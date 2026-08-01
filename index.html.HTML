@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260731-05-8d4b1dd","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,0","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHO2EIdDP0,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YADy3sAhvXQ,0","Oleo Script":"YACgEQQ14jI,0","Playfair Display":"YAFdJhem5V8,1","Poppins":"YAE5fPSY9qM,0","Press Start 2P":"YAFyGr-8pmQ,0","Source Sans 3":"YAG4lO1Mj10,0","Space Grotesk":"YAHO2sjPCSM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0"}}');</script><script src="/_sdk/1c274b9c2bdd3519.telemetry_sdk.js" integrity="sha512-QvDGWM2/VIwB7KXA4cwqkIBlxCdJGd0uO9ksM8wsqNKNiFgewrwdYlGY9ioCTg42Djm5Sw7uha/WH60UzzKOhQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Booking Lapangan</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/afc2d393c2ac926b.editing_sdk.js" integrity="sha512-Ue7lZoRec1IGq7j3H/38aWZalTxanTjFGoCKdWTFUGFJwCO6Pinekpb6vP1nEQ3ZFuEOglmaFKfrRMeLheTxnw=="></script>
+  <style>
+    :root { --green:#123b2b; --green2:#1c5b42; --lime:#d8f3df; --ink:#17211d; --muted:#6e7b74; --line:#e5ebe7; --paper:#fff; --canvas:#f3f6f4; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font-family:"DM Sans", sans-serif; background:var(--canvas); }
+    button, input, select, textarea { font:inherit; }
+    button { cursor:pointer; }
+    button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:3px solid #8bce9f; outline-offset:2px; }
+    .app-shell { width:100%; min-height:calc(100 * min(var(--vh, 1vh), 1vh)); display:flex; }
+    .sidebar { width:254px; flex:0 0 254px; background:var(--green); color:white; padding:26px 16px; display:flex; flex-direction:column; }
+    .brand { display:flex; gap:11px; align-items:center; padding:0 10px 29px; border-bottom:1px solid rgba(255,255,255,.13); }
+    .brand-mark { width:36px; height:36px; background:#d7f3df; color:var(--green); border-radius:11px; display:grid; place-items:center; font-size:20px; }
+    .brand strong { display:block; font-size:15px; letter-spacing:.01em; }
+    .brand small { color:#b9d2c2; font-size:11px; }
+    .nav-list { padding-top:22px; display:grid; gap:5px; }
+    .nav-btn { border:0; width:100%; background:transparent; color:#bed4c5; text-align:left; padding:12px 13px; border-radius:10px; display:flex; align-items:center; gap:11px; font-size:14px; transition:.2s; }
+    .nav-btn:hover,.nav-btn.active { color:white; background:rgba(255,255,255,.13); }
+    .nav-btn.active { box-shadow:inset 3px 0 #9ae6ad; }
+    .side-note { margin-top:auto; padding:14px; background:rgba(255,255,255,.08); border-radius:12px; color:#c6dbcd; font-size:12px; line-height:1.55; }
+    .main-area { width:calc(100% - 254px); min-width:0; }
+    .topbar { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 34px; background:white; border-bottom:1px solid var(--line); }
+    .topbar-title { font-size:17px; font-weight:700; }
+    .topbar-sub { color:var(--muted); font-size:12px; margin-top:3px; }
+    .wib-clock { background:#edf8f0; color:var(--green); border-radius:10px; padding:9px 13px; font-weight:700; font-size:13px; white-space:nowrap; }
+    .page-content { padding:30px 34px 44px; max-width:1500px; }
+    .view { display:none; animation:rise .32s ease both; }
+    .view.active { display:block; }
+    @keyframes rise { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:none } }
+    .view-heading { margin:0 0 5px; font-size:25px; letter-spacing:-.035em; }
+    .view-description { margin:0 0 24px; color:var(--muted); font-size:14px; }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin-bottom:24px; }
+    .stat-card { background:white; border:1px solid var(--line); border-radius:15px; padding:18px; box-shadow:0 4px 14px rgba(25,55,39,.03); }
+    .stat-label { color:var(--muted); font-size:12px; font-weight:700; }
+    .stat-number { font-size:28px; font-weight:800; letter-spacing:-.05em; margin-top:8px; color:var(--green); }
+    .split-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:20px; }
+    .panel { background:white; border:1px solid var(--line); border-radius:15px; overflow:hidden; }
+    .panel-head { display:flex; justify-content:space-between; align-items:center; gap:14px; padding:18px 20px; border-bottom:1px solid var(--line); }
+    .panel-head h2 { font-size:15px; margin:0; }
+    .panel-body { padding:20px; }
+    .next-empty { color:var(--muted); font-size:13px; text-align:center; padding:24px 0; }
+    .next-card { border-left:4px solid #f5bd32; background:#fffaf0; padding:14px; border-radius:0 10px 10px 0; }
+    .next-card strong,.next-card span { display:block; }
+    .next-card span { color:var(--muted); font-size:12px; margin-top:5px; }
+    .field-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .field-grid .wide { grid-column:1/-1; }
+    .field label { display:block; margin:0 0 7px; font-size:12px; font-weight:700; color:#35453c; }
+    .field input,.field select,.field textarea { width:100%; border:1px solid #d7e0da; background:#fff; padding:11px 12px; border-radius:9px; color:var(--ink); }
+    .field textarea { min-height:88px; resize:vertical; }
+    .field input[readonly] { background:#f1f5f2; color:#42604d; font-weight:700; }
+    .radio-line { display:flex; flex-wrap:wrap; gap:9px; }
+    .radio-line label { display:flex; align-items:center; gap:6px; border:1px solid #d7e0da; border-radius:8px; padding:9px 11px; margin:0; cursor:pointer; font-weight:500; }
+    .booking-layout { display:grid; grid-template-columns:minmax(0,1fr) 285px; gap:20px; }
+    .price-box { background:var(--green); color:white; border-radius:15px; padding:22px; height:max-content; position:sticky; top:20px; }
+    .price-box p { color:#b9d8c2; font-size:12px; margin:0 0 6px; }
+    .price-value { font-size:25px; font-weight:800; letter-spacing:-.05em; margin:0 0 20px; }
+    .price-rule { padding-top:16px; border-top:1px solid rgba(255,255,255,.17); color:#d5e8da; font-size:12px; line-height:1.6; }
+    .btn { border:0; padding:11px 15px; border-radius:9px; font-size:13px; font-weight:700; transition:.2s; display:inline-flex; align-items:center; justify-content:center; gap:7px; }
+    .btn-primary { background:var(--green); color:#fff; } .btn-primary:hover { background:var(--green2); }
+    .btn-soft { background:#e9f5ec; color:var(--green); } .btn-soft:hover { background:#d5eddb; }
+    .btn-danger { background:#fff0f0; color:#b72f2f; } .btn-danger:hover { background:#ffdede; }
+    .btn-muted { background:#f0f3f1; color:#45544b; }
+    .form-actions { display:flex; gap:10px; margin-top:22px; }
+    .notice { display:none; margin:0 0 16px; padding:12px 14px; border-radius:9px; font-size:13px; font-weight:600; }
+    .notice.show { display:block; } .notice.error { background:#fff0f0; color:#ae3030; } .notice.success { background:#e7f7eb; color:#17683a; }
+    .table-wrap { overflow:auto; }
+    table { border-collapse:collapse; width:100%; min-width:1150px; font-size:12px; }
+    th { color:#607067; background:#f7f9f7; text-align:left; padding:12px 13px; font-size:11px; white-space:nowrap; }
+    td { padding:13px; border-top:1px solid var(--line); vertical-align:top; }
+    .badge { display:inline-block; border-radius:999px; padding:5px 8px; font-size:10px; font-weight:800; white-space:nowrap; }
+    .status-booking { background:#fff1c9; color:#815b00; } .status-proses { background:#ffe0df; color:#a32929; } .status-selesai { background:#e4e8e6; color:#53625a; } .pay { background:#e0f4e5; color:#237341; }
+    .row-actions { display:flex; gap:6px; }
+    .small-btn { border:0; border-radius:7px; padding:7px 8px; font-size:11px; font-weight:700; }
+    .calendar-tools { display:flex; gap:10px; align-items:end; margin-bottom:18px; }
+    .calendar-tools .field { width:200px; }
+    .cal-table { min-width:900px; }
+    .cal-table th:first-child { width:110px; }
+    .cal-cell { min-width:190px; height:76px; border:1px solid white; padding:9px; border-radius:8px; cursor:pointer; transition:.16s; }
+    .cal-cell:hover { filter:brightness(.96); transform:scale(.99); }
+    .free { background:#dff5e5; color:#276b3d; } .booked { background:#fff0be; color:#795800; } .in-use { background:#ffd8d6; color:#982c2a; } .done { background:#e5e8e6; color:#606a64; }
+    .cal-cell strong { display:block; font-size:11px; } .cal-cell span { display:block; font-size:10px; margin-top:3px; }
+    .legend { display:flex; flex-wrap:wrap; gap:9px; font-size:11px; color:var(--muted); }
+    .legend i { width:10px; height:10px; display:inline-block; border-radius:3px; margin-right:4px; }
+    .report-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-bottom:20px; }
+    .money { font-weight:800; color:var(--green); }
+    .setting-stack { max-width:700px; }
+    .empty { padding:34px; text-align:center; color:var(--muted); font-size:13px; }
+    .modal-backdrop { display:none; position:fixed; inset:0; z-index:40; background:rgba(11,30,20,.52); align-items:center; justify-content:center; padding:18px; }
+    .modal-backdrop.show { display:flex; }
+    .modal { width:min(440px,100%); background:white; border-radius:16px; padding:23px; box-shadow:0 20px 60px rgba(0,0,0,.2); }
+    .modal h2 { margin:0 0 8px; font-size:18px; } .modal p { color:var(--muted); font-size:13px; line-height:1.6; margin:0 0 20px; }
+    .modal-actions { display:flex; justify-content:flex-end; gap:9px; }
+    .mobile-menu { display:none; }
+    @media(max-width:920px){ .sidebar { width:70px; flex-basis:70px; padding:20px 9px; }.brand { padding:0 5px 23px; }.brand div:last-child,.nav-btn span,.side-note { display:none; }.nav-btn { justify-content:center; padding:13px; font-size:18px; }.main-area{width:calc(100% - 70px)}.stats{grid-template-columns:repeat(2,1fr)}.split-grid,.booking-layout{grid-template-columns:1fr}.price-box{position:static}.page-content,.topbar{padding-left:20px;padding-right:20px} }
+    @media(max-width:600px){ .app-shell{display:block}.sidebar{display:none}.main-area{width:100%}.mobile-menu{display:flex; overflow:auto; gap:6px; padding:9px 13px; background:var(--green)}.mobile-menu .nav-btn{width:auto; white-space:nowrap; padding:8px 10px; font-size:11px}.mobile-menu .nav-btn span{display:inline}.topbar{min-height:64px}.topbar-sub{display:none}.wib-clock{font-size:11px}.page-content{padding:22px 14px}.stats,.report-cards,.field-grid{grid-template-columns:1fr}.view-heading{font-size:22px}.calendar-tools{align-items:stretch; flex-direction:column}.calendar-tools .field{width:100%} }
+    @media print { .sidebar,.topbar,.mobile-menu,.no-print,.modal-backdrop { display:none!important; }.main-area{width:100%!important}.page-content{padding:0}.view{display:none!important}.view#reports-view{display:block!important}.panel{border:0}.table-wrap{overflow:visible} }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/63b5ed99e5b990a7.data_sdk.js" type="text/javascript" integrity="sha512-fLUGE0rNLPgXS9olxs6QORKg6Diqpi0PSKoNistdAaH/GruBuq5/XhrOdSOcKfqcIIRQ1KvO66J1vCBvvLj4rA=="></script>
+  <script src="/_sdk/797e0a7e8af7c7f8.resizing_sdk.js" type="text/javascript" integrity="sha512-giNZj5eBnASPpYcJXEVOn6FguxFDnaH+gnf5nbRfUgfRDqtOdV+5Dna/CwvXiPeR//Plhtbt32CML3VF4+oCLw=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(243, 246, 244);">
+  <div class="app-shell">
+   <aside class="sidebar">
+    <div class="brand">
+     <div class="brand-mark">
+      ⚽
+     </div>
+     <div>
+      <strong id="brandName">KERA SAKTI</strong><small>Field Operations</small>
+     </div>
+    </div>
+    <nav class="nav-list" aria-label="Navigasi utama"><button type="button" class="nav-btn active" data-view="dashboard"><b>🏠</b><span data-template-id="nav-dashboard" class="canva-text" style="color: rgb(190, 212, 197); font-weight: 600; font-style: normal; font-size: 14px;">Dashboard</span></button> <button type="button" class="nav-btn" data-view="booking"><b>📝</b><span data-template-id="nav-booking" class="canva-text" style="color: rgb(190, 212, 197); font-weight: 600; font-style: normal; font-size: 14px;">Booking Baru</span></button> <button type="button" class="nav-btn" data-view="schedule"><b>📅</b><span data-template-id="nav-schedule" class="canva-text" style="color: rgb(190, 212, 197); font-weight: 600; font-style: normal; font-size: 14px;">Jadwal Booking</span></button> <button type="button" class="nav-btn" data-view="calendar"><b>🗓</b><span data-template-id="nav-calendar" class="canva-text" style="color: rgb(190, 212, 197); font-weight: 600; font-style: normal; font-size: 14px;">Kalender Operasional</span></button> <button type="button" class="nav-btn" data-view="reports"><b>📊</b><span data-template-id="nav-reports" class="canva-text" style="color: rgb(190, 212, 197); font-weight: 600; font-style: normal; font-size: 14px;">Laporan</span></button> <button type="button" class="nav-btn" data-view="settings"><b>⚙</b><span data-template-id="nav-settings" class="canva-text" style="color: rgb(190, 212, 197); font-weight: 600; font-style: normal; font-size: 14px;">Pengaturan</span></button>
+    </nav>
+    <div data-template-id="sidebar-note" class="side-note canva-banner" style="background: rgba(255, 255, 255, 0.08); color: rgb(198, 219, 205); font-weight: 400; font-style: normal; font-size: 14px;">Data booking tersimpan aman di perangkat browser ini.</div>
+   </aside>
+   <main class="main-area">
+    <nav class="mobile-menu" aria-label="Navigasi mobile"><button type="button" class="nav-btn active" data-view="dashboard"><span>Dashboard</span></button> <button type="button" class="nav-btn" data-view="booking"><span>Booking</span></button> <button type="button" class="nav-btn" data-view="schedule"><span>Jadwal</span></button> <button type="button" class="nav-btn" data-view="calendar"><span>Kalender</span></button> <button type="button" class="nav-btn" data-view="reports"><span>Laporan</span></button>
+    </nav>
+    <header class="topbar">
+     <div>
+      <div class="topbar-title" id="topTitle">
+       Dashboard Operasional
+      </div>
+      <div class="topbar-sub" id="topSub">
+       Pantau aktivitas lapangan hari ini
+      </div>
+     </div>
+     <div class="wib-clock">
+      WIB · <span id="clock">--:--:--</span>
+     </div>
+    </header>
+    <div class="page-content">
+     <section id="dashboard-view" class="view active">
+      <h1 data-template-id="dashboard-title" class="view-heading canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 28px;">Dashboard</h1>
+      <p data-template-id="dashboard-desc" class="view-description canva-text" style="color: rgb(110, 123, 116); font-weight: 400; font-style: normal; font-size: 14px;">Ringkasan operasional dan aktivitas booking lapangan.</p>
+      <div class="stats">
+       <article class="stat-card">
+        <div data-template-id="stat-today-label" class="stat-label canva-text" style="color: rgb(110, 123, 116); font-weight: 700; font-style: normal; font-size: 14px;">Booking Hari Ini</div>
+        <div id="statToday" class="stat-number">
+         0
+        </div>
+       </article>
+       <article class="stat-card">
+        <div data-template-id="stat-week-label" class="stat-label canva-text" style="color: rgb(110, 123, 116); font-weight: 700; font-style: normal; font-size: 14px;">Booking Minggu Ini</div>
+        <div id="statWeek" class="stat-number">
+         0
+        </div>
+       </article>
+       <article class="stat-card">
+        <div data-template-id="stat-month-label" class="stat-label canva-text" style="color: rgb(110, 123, 116); font-weight: 700; font-style: normal; font-size: 14px;">Booking Bulan Ini</div>
+        <div id="statMonth" class="stat-number">
+         0
+        </div>
+       </article>
+       <article class="stat-card">
+        <div data-template-id="stat-income-label" class="stat-label canva-text" style="color: rgb(110, 123, 116); font-weight: 700; font-style: normal; font-size: 14px;">Pendapatan Hari Ini</div>
+        <div id="statIncome" class="stat-number">
+         Rp0
+        </div>
+       </article>
+      </div>
+      <div class="split-grid">
+       <section class="panel">
+        <div class="panel-head">
+         <h2 data-template-id="next-heading" class="canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 21px;">Booking Berikutnya</h2><button type="button" class="btn btn-soft no-print" id="goBooking">+ Booking</button>
+        </div>
+        <div class="panel-body" id="nextBooking"></div>
+       </section>
+       <section class="panel">
+        <div class="panel-head">
+         <h2 data-template-id="quick-heading" class="canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 21px;">Akses Cepat</h2>
+        </div>
+        <div class="panel-body">
+         <p data-template-id="quick-copy" class="canva-text" style="color: rgb(110, 123, 116); font-size: 14px; line-height: 1.65; margin-top: 0px; font-weight: 400; font-style: normal;">Gunakan kalender operasional untuk memantau ketersediaan setiap slot pada ketiga lapangan.</p><button type="button" class="btn btn-primary no-print" data-view="calendar">Lihat Kalender Operasional</button>
+        </div>
+       </section>
+      </div>
+     </section>
+     <section id="booking-view" class="view">
+      <h1 data-template-id="booking-title" class="view-heading canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 28px;">Booking Baru</h1>
+      <p data-template-id="booking-desc" class="view-description canva-text" style="color: rgb(110, 123, 116); font-weight: 400; font-style: normal; font-size: 14px;">Masukkan data reservasi. Tarif akan terhitung otomatis sesuai jadwal.</p>
+      <div id="bookingNotice" class="notice" role="status"></div>
+      <div class="booking-layout">
+       <form id="bookingForm" class="panel" novalidate="">
+        <div class="panel-body"><input type="hidden" id="bookingId">
+         <div class="field-grid">
+          <div class="field">
+           <label for="team">Nama Tim</label><input id="team" required="">
+          </div>
+          <div class="field">
+           <label for="pic">Nama PIC</label><input id="pic" required="">
+          </div>
+          <div class="field">
+           <label for="phone">Nomor HP PIC</label><input id="phone" inputmode="tel" required="">
+          </div>
+          <div class="field">
+           <label for="fieldName">Pilih Lapangan</label><select id="fieldName" required=""></select>
+          </div>
+          <div class="field">
+           <label for="bookingDate">Tanggal Booking</label><input id="bookingDate" type="date" required="">
+          </div>
+          <div class="field">
+           <label for="slot">Slot Booking</label><select id="slot" required=""></select>
+          </div>
+          <div class="field">
+           <label for="total">Total Harga</label><input id="total" readonly="">
+          </div>
+          <div class="field">
+           <label for="dp">Nominal DP</label><input id="dp" inputmode="numeric" placeholder="0">
+          </div>
+          <div class="field">
+           <label for="remaining">Sisa Pembayaran</label><input id="remaining" readonly="">
+          </div>
+          <div class="field">
+           <label>Metode Pembayaran</label>
+           <div class="radio-line">
+            <label><input type="radio" name="paymentMethod" value="Cash" checked=""> Cash</label><label><input type="radio" name="paymentMethod" value="Transfer"> Transfer</label>
+           </div>
+          </div>
+          <div class="field">
+           <label>Wasit</label>
+           <div class="radio-line">
+            <label><input type="radio" name="referee" value="Ya"> Ya</label><label><input type="radio" name="referee" value="Tidak" checked=""> Tidak</label>
+           </div>
+          </div>
+          <div class="field">
+           <label>Fotografer</label>
+           <div class="radio-line">
+            <label><input type="radio" name="photographer" value="Ya"> Ya</label><label><input type="radio" name="photographer" value="Tidak" checked=""> Tidak</label>
+           </div>
+          </div>
+          <div class="field wide">
+           <label for="notes">Keterangan</label><textarea id="notes"></textarea>
+          </div>
+         </div>
+         <div class="form-actions">
+          <button data-template-id="save-booking" class="btn btn-primary canva-button" type="submit" style="background: rgb(18, 59, 43); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 14px;">Simpan Booking</button><button data-template-id="cancel-edit" class="btn btn-muted canva-button" type="button" id="cancelEdit" style="background: rgb(240, 243, 241); color: rgb(69, 84, 75); font-weight: 700; font-style: normal; font-size: 14px;">Bersihkan Form</button>
+         </div>
+        </div>
+       </form>
+       <aside data-template-id="price-panel" class="price-box canva-panel" style="background: rgb(18, 59, 43);">
+        <p data-template-id="price-label" class="canva-text" style="color: rgb(185, 216, 194); font-weight: 700; font-style: normal; font-size: 14px;">Estimasi Total Harga</p>
+        <div id="pricePreview" class="price-value">
+         Rp0
+        </div>
+        <div data-template-id="price-rule" class="price-rule canva-text" style="color: rgb(213, 232, 218); font-weight: 400; font-style: normal; font-size: 14px;">Harga mengikuti lapangan, hari, dan slot yang dipilih. Jumat pukul 10.00–14.00 tidak tersedia untuk lapangan Kera Sakti.</div>
+       </aside>
+      </div>
+     </section>
+     <section id="schedule-view" class="view">
+      <h1 data-template-id="schedule-title" class="view-heading canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 28px;">Jadwal Booking</h1>
+      <p data-template-id="schedule-desc" class="view-description canva-text" style="color: rgb(110, 123, 116); font-weight: 400; font-style: normal; font-size: 14px;">Kelola data booking, status pemakaian, dan pembayaran.</p>
+      <div class="panel">
+       <div class="table-wrap">
+        <table>
+         <thead>
+          <tr>
+           <th>Tanggal</th>
+           <th>Lapangan</th>
+           <th>Slot</th>
+           <th>Nama Tim</th>
+           <th>PIC / HP</th>
+           <th>DP</th>
+           <th>Sisa</th>
+           <th>Metode</th>
+           <th>Status Booking</th>
+           <th>Status Pembayaran</th>
+           <th class="no-print">Aksi</th>
+          </tr>
+         </thead>
+         <tbody id="scheduleRows"></tbody>
+        </table>
+       </div>
+      </div>
+     </section>
+     <section id="calendar-view" class="view">
+      <h1 data-template-id="calendar-title" class="view-heading canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 28px;">Kalender Operasional</h1>
+      <p data-template-id="calendar-desc" class="view-description canva-text" style="color: rgb(110, 123, 116); font-weight: 400; font-style: normal; font-size: 14px;">Klik booking pada kalender untuk melihat detail operasional.</p>
+      <div class="calendar-tools no-print">
+       <div class="field">
+        <label for="calendarDate">Pilih Tanggal</label><input id="calendarDate" type="date">
+       </div><button class="btn btn-primary" id="todayCalendar" type="button">Hari Ini</button>
+      </div>
+      <div class="legend">
+       <span><i class="free"></i>Kosong</span><span><i class="booked"></i>Booking</span><span><i class="in-use"></i>Sedang Digunakan</span><span><i class="done"></i>Selesai</span>
+      </div>
+      <div class="panel" style="margin-top:14px">
+       <div class="table-wrap">
+        <table class="cal-table">
+         <thead>
+          <tr>
+           <th>Jam</th>
+           <th>Stadion Kera Sakti</th>
+           <th>Lapangan Kera Sakti</th>
+           <th>Lapangan Dejan Cibinong</th>
+          </tr>
+         </thead>
+         <tbody id="calendarRows"></tbody>
+        </table>
+       </div>
+      </div>
+     </section>
+     <section id="reports-view" class="view">
+      <div class="no-print" style="display:flex;justify-content:space-between;gap:16px;align-items:start">
+       <div>
+        <h1 data-template-id="reports-title" class="view-heading canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 28px;">Laporan</h1>
+        <p data-template-id="reports-desc" class="view-description canva-text" style="color: rgb(110, 123, 116); font-weight: 400; font-style: normal; font-size: 14px;">Rekap booking dan pendapatan dari seluruh lapangan.</p>
+       </div><button data-template-id="print-report" class="btn btn-primary canva-button" id="printReport" type="button" style="background: rgb(18, 59, 43); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 14px;">Cetak / Print PDF</button>
+      </div>
+      <div class="report-cards">
+       <article class="stat-card">
+        <div data-template-id="report-total-label" class="stat-label canva-text" style="color: rgb(110, 123, 116); font-weight: 700; font-style: normal; font-size: 14px;">Total Booking</div>
+        <div id="reportTotal" class="stat-number">
+         0
+        </div>
+       </article>
+       <article class="stat-card">
+        <div data-template-id="report-income-label" class="stat-label canva-text" style="color: rgb(110, 123, 116); font-weight: 700; font-style: normal; font-size: 14px;">Total Pendapatan</div>
+        <div id="reportIncome" class="stat-number">
+         Rp0
+        </div>
+       </article>
+      </div>
+      <section class="panel" style="margin-bottom:20px">
+       <div class="panel-head">
+        <h2 data-template-id="income-field-heading" class="canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 21px;">Pendapatan per Lapangan</h2>
+       </div>
+       <div class="panel-body" id="fieldIncome"></div>
+      </section>
+      <section class="panel">
+       <div class="panel-head">
+        <h2 data-template-id="history-heading" class="canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 21px;">Riwayat Booking</h2>
+       </div>
+       <div class="table-wrap">
+        <table>
+         <thead>
+          <tr>
+           <th>Tanggal</th>
+           <th>Lapangan</th>
+           <th>Tim</th>
+           <th>Slot</th>
+           <th>Total</th>
+           <th>Status</th>
+          </tr>
+         </thead>
+         <tbody id="reportRows"></tbody>
+        </table>
+       </div>
+      </section>
+     </section>
+     <section id="settings-view" class="view">
+      <h1 data-template-id="settings-title" class="view-heading canva-text" style="color: rgb(23, 33, 29); font-weight: 700; font-style: normal; font-size: 28px;">Pengaturan</h1>
+      <p data-template-id="settings-desc" class="view-description canva-text" style="color: rgb(110, 123, 116); font-weight: 400; font-style: normal; font-size: 14px;">Ubah identitas dan informasi operasional tempat.</p>
+      <form id="settingsForm" class="panel setting-stack">
+       <div class="panel-body">
+        <div id="settingsNotice" class="notice" role="status"></div>
+        <div class="field-grid">
+         <div class="field wide">
+          <label for="settingName">Nama Tempat</label><input id="settingName" required="">
+         </div>
+         <div class="field wide">
+          <label for="settingAddress">Alamat</label><textarea id="settingAddress"></textarea>
+         </div>
+         <div class="field">
+          <label for="settingPhone">Nomor WhatsApp</label><input id="settingPhone">
+         </div>
+         <div class="field">
+          <label for="settingHours">Jam Operasional</label><input id="settingHours">
+         </div>
+         <div class="field wide">
+          <label for="settingLogo">Logo / Teks Singkat</label><input id="settingLogo">
+         </div>
+        </div>
+        <div class="form-actions">
+         <button data-template-id="save-settings" class="btn btn-primary canva-button" type="submit" style="background: rgb(18, 59, 43); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 14px;">Simpan Pengaturan</button>
+        </div>
+       </div>
+      </form>
+     </section>
+    </div>
+   </main>
+  </div>
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+   <div class="modal">
+    <h2 id="modalTitle">Konfirmasi Hapus</h2>
+    <p id="modalText">Data booking akan dihapus secara permanen dari perangkat ini.</p>
+    <div class="modal-actions">
+     <button class="btn btn-muted" type="button" id="modalCancel">Batal</button><button class="btn btn-danger" type="button" id="modalConfirm">Hapus Booking</button>
+    </div>
+   </div>
+  </div>
+  <script>
+(() => {
+  const FIELDS = ["Stadion Kera Sakti","Lapangan Kera Sakti","Lapangan Dejan Cibinong"];
+  const SLOTS = ["06.00 - 08.00","08.00 - 10.00","10.00 - 12.00","12.00 - 14.00","14.00 - 16.00","16.00 - 18.00","18.00 - 20.00","20.00 - 22.00","22.00 - 00.00"];
+  const stadion = [[2300000,2300000,3600000],[2300000,2300000,3600000],[1000000,null,2500000],[1000000,null,2500000],[2300000,2300000,4000000],[3500000,3500000,4000000],[3500000,3500000,4000000],[3500000,3500000,4000000],[3500000,3500000,4000000]];
+  const regular = [[1300000,1300000,2600000],[1300000,1300000,2600000],[800000,null,1500000],[800000,null,1500000],[1300000,1300000,2600000],[2000000,2300000,2600000],[2300000,2500000,2800000],[2300000,2500000,2800000],[2300000,2500000,2800000]];
+  const defaultSettings = {name:"ANA MUMA PROJECT",address:"Jakarta, Indonesia",phone:"",hours:"06.00 - 00.00 WIB",logo:"KS"};
+  let bookings = JSON.parse(localStorage.getItem("ks_bookings") || "[]");
+  let settings = {...defaultSettings, ...JSON.parse(localStorage.getItem("ks_settings") || "{}")};
+  let pendingDelete = null;
+
+  const $ = id => document.getElementById(id);
+  const rupiah = n => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n)||0);
+  const localDate = () => new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Jakarta"}).format(new Date());
+  const fmtDate = d => new Intl.DateTimeFormat("id-ID",{dateStyle:"medium",timeZone:"Asia/Jakarta"}).format(new Date(d+"T00:00:00"));
+  const cleanNum = val => Number(String(val||"").replace(/\D/g,"")) || 0;
+  const getGroup = date => { const day = new Date(date+"T00:00:00").getDay(); return day === 5 ? 1 : (day === 0 || day === 6 ? 2 : 0); };
+  const priceFor = (field,date,slot) => { if(!field || !date || !slot) return null; const table = field === FIELDS[0] ? stadion : regular; return table[SLOTS.indexOf(slot)]?.[getGroup(date)] ?? null; };
+  const saveBookings = () => localStorage.setItem("ks_bookings",JSON.stringify(bookings));
+  const setNotice = (id,msg,type) => { const n=$(id); n.textContent=msg;n.className="notice show "+type; setTimeout(()=>n.className="notice",4500); };
+
+  function populateOptions() {
+    $("fieldName").innerHTML = '<option value="">Pilih lapangan</option>'+FIELDS.map(x=>`<option>${x}</option>`).join("");
+    $("slot").innerHTML = '<option value="">Pilih slot</option>'+SLOTS.map(x=>`<option>${x}</option>`).join("");
+  }
+  function updatePrice() {
+    const price=priceFor($("fieldName").value,$("bookingDate").value,$("slot").value);
+    $("total").value=price===null ? ( $("fieldName").value && $("bookingDate").value && $("slot").value ? "Tidak tersedia" : "" ) : rupiah(price);
+    $("pricePreview").textContent=price===null ? "Pilih jadwal" : rupiah(price);
+    updateRemaining();
+  }
+  function updateRemaining() {
+    const price=priceFor($("fieldName").value,$("bookingDate").value,$("slot").value)||0;
+    const remain=Math.max(0,price-cleanNum($("dp").value));
+    $("remaining").value=rupiah(remain);
+  }
+  function resetForm() {
+    $("bookingForm").reset(); $("bookingId").value=""; $("bookingDate").value=localDate(); $("total").value=""; $("remaining").value=""; $("pricePreview").textContent="Rp0";
+  }
+  function renderDashboard() {
+    const today=localDate(), now=new Date(today+"T00:00:00"), weekStart=new Date(now); weekStart.setDate(now.getDate()-((now.getDay()+6)%7));
+    const weekKey=weekStart.toISOString().slice(0,10), month=today.slice(0,7);
+    $("statToday").textContent=bookings.filter(b=>b.date===today).length;
+    $("statWeek").textContent=bookings.filter(b=>b.date>=weekKey&&b.date<=today).length;
+    $("statMonth").textContent=bookings.filter(b=>b.date.startsWith(month)).length;
+    $("statIncome").textContent=rupiah(bookings.filter(b=>b.date===today).reduce((a,b)=>a+b.total,0));
+    const next=bookings.filter(b=>b.date>=today&&b.status!=="Selesai").sort((a,b)=>(a.date+a.slot).localeCompare(b.date+b.slot))[0];
+    $("nextBooking").innerHTML=next?`<div class="next-card"><strong>${next.team}</strong><span>${fmtDate(next.date)} · ${next.slot}</span><span>${next.field} · PIC ${next.pic}</span></div>`:`<div class="next-empty">Belum ada booking mendatang.</div>`;
+  }
+  function statusSelect(b) { return `<select class="statusChange" data-id="${b.id}">${["Booking","Proses","Selesai"].map(s=>`<option ${b.status===s?"selected":""}>${s}</option>`).join("")}</select>`; }
+  function renderSchedule() {
+    const rows=[...bookings].sort((a,b)=>(a.date+a.slot).localeCompare(b.date+b.slot));
+    $("scheduleRows").innerHTML=rows.length?rows.map(b=>`<tr><td>${fmtDate(b.date)}</td><td>${b.field}</td><td>${b.slot}</td><td><b>${b.team}</b></td><td>${b.pic}<br><span style="color:#6e7b74">${b.phone}</span></td><td>${rupiah(b.dp)}</td><td>${rupiah(b.remaining)}</td><td>${b.method}</td><td>${statusSelect(b)}</td><td><span class="badge ${b.paymentStatus==="Lunas"?"pay":"status-booking"}">${b.paymentStatus}</span></td><td class="no-print"><div class="row-actions"><button class="small-btn btn-soft editBtn" data-id="${b.id}">Edit</button><button class="small-btn btn-danger deleteBtn" data-id="${b.id}">Hapus</button></div></td></tr>`).join(""):`<tr><td colspan="11" class="empty">Belum ada booking tersimpan.</td></tr>`;
+  }
+  function renderCalendar() {
+    const date=$("calendarDate").value||localDate();
+    $("calendarRows").innerHTML=SLOTS.map(slot=>`<tr><th>${slot}</th>${FIELDS.map(field=>{const b=bookings.find(x=>x.date===date&&x.field===field&&x.slot===slot); if(!b)return `<td><div class="cal-cell free"><strong>Kosong</strong><span>Tersedia</span></div></td>`;const c=b.status==="Booking"?"booked":b.status==="Proses"?"in-use":"done";return `<td><button type="button" class="cal-cell ${c} calDetail" data-id="${b.id}"><strong>${b.team}</strong><span>${b.status} · ${b.pic}</span></button></td>`}).join("")}</tr>`).join("");
+  }
+  function renderReports() {
+    const income=bookings.reduce((a,b)=>a+b.total,0); $("reportTotal").textContent=bookings.length;$("reportIncome").textContent=rupiah(income);
+    $("fieldIncome").innerHTML=FIELDS.map(f=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #edf0ee;font-size:13px"><span>${f}</span><strong class="money">${rupiah(bookings.filter(b=>b.field===f).reduce((a,b)=>a+b.total,0))}</strong></div>`).join("");
+    $("reportRows").innerHTML=bookings.length?[...bookings].sort((a,b)=>b.date.localeCompare(a.date)).map(b=>`<tr><td>${fmtDate(b.date)}</td><td>${b.field}</td><td>${b.team}</td><td>${b.slot}</td><td class="money">${rupiah(b.total)}</td><td><span class="badge status-${b.status.toLowerCase()}">${b.status}</span></td></tr>`).join(""):`<tr><td colspan="6" class="empty">Belum ada riwayat booking.</td></tr>`;
+  }
+  function renderAll(){renderDashboard();renderSchedule();renderCalendar();renderReports();}
+  function showView(view) {
+    document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id===view+"-view"));
+    document.querySelectorAll(".nav-btn[data-view]").forEach(x=>x.classList.toggle("active",x.dataset.view===view));
+    const labels={dashboard:["Dashboard Operasional","Pantau aktivitas lapangan hari ini"],booking:["Booking Baru","Input reservasi dan harga otomatis"],schedule:["Jadwal Booking","Kelola seluruh booking yang tercatat"],calendar:["Kalender Operasional","Status penggunaan tiga lapangan"],reports:["Laporan","Ringkasan pendapatan dan riwayat booking"],settings:["Pengaturan","Identitas operasional tempat"]};
+    $("topTitle").textContent=labels[view][0];$("topSub").textContent=labels[view][1]; renderAll();
+  }
+  function editBooking(id) {
+    const b=bookings.find(x=>x.id===id);if(!b)return;
+    $("bookingId").value=b.id;$("team").value=b.team;$("pic").value=b.pic;$("phone").value=b.phone;$("fieldName").value=b.field;$("bookingDate").value=b.date;$("slot").value=b.slot;$("dp").value=b.dp;$("notes").value=b.notes||"";
+    document.querySelector(`input[name="paymentMethod"][value="${b.method}"]`).checked=true;document.querySelector(`input[name="referee"][value="${b.referee}"]`).checked=true;document.querySelector(`input[name="photographer"][value="${b.photographer}"]`).checked=true;
+    updatePrice();showView("booking");window.scrollTo({top:0,behavior:"smooth"});
+  }
+  function showDetail(id) { const b=bookings.find(x=>x.id===id);if(!b)return;$("modalTitle").textContent=b.team;$("modalText").innerHTML=`<b>${b.field}</b><br>${fmtDate(b.date)} · ${b.slot}<br>PIC: ${b.pic} (${b.phone})<br>Status: ${b.status} · Pembayaran: ${b.paymentStatus}`;$("modalConfirm").style.display="none";$("modalBackdrop").classList.add("show");}
+  function tick(){ $("clock").textContent=new Intl.DateTimeFormat("id-ID",{timeZone:"Asia/Jakarta",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date()); }
+  document.querySelectorAll("[data-view]").forEach(btn=>btn.addEventListener("click",()=>showView(btn.dataset.view)));
+  $("goBooking").addEventListener("click",()=>showView("booking"));
+  ["fieldName","bookingDate","slot"].forEach(id=>$(id).addEventListener("change",updatePrice));$("dp").addEventListener("input",updateRemaining);
+  $("cancelEdit").addEventListener("click",resetForm);
+  $("bookingForm").addEventListener("submit",e=>{
+    e.preventDefault();const field=$("fieldName").value,date=$("bookingDate").value,slot=$("slot").value,price=priceFor(field,date,slot),id=$("bookingId").value;
+    if(!$("team").value.trim()||!$("pic").value.trim()||!$("phone").value.trim()||!field||!date||!slot){setNotice("bookingNotice","Lengkapi seluruh data wajib booking.","error");return;}
+    if(price===null){setNotice("bookingNotice","Slot ini tidak tersedia pada hari yang dipilih.","error");return;}
+    if(bookings.some(b=>b.field===field&&b.date===date&&b.slot===slot&&b.id!==id)){setNotice("bookingNotice","Slot tersebut sudah dibooking untuk lapangan dan tanggal yang sama.","error");return;}
+    const dp=cleanNum($("dp").value), remaining=Math.max(0,price-dp), old=bookings.find(b=>b.id===id);
+    const data={id:id||Date.now().toString(),team:$("team").value.trim(),pic:$("pic").value.trim(),phone:$("phone").value.trim(),field,date,slot,total:price,dp,remaining,method:document.querySelector('input[name="paymentMethod"]:checked').value,referee:document.querySelector('input[name="referee"]:checked').value,photographer:document.querySelector('input[name="photographer"]:checked').value,notes:$("notes").value.trim(),status:old?.status||"Booking",paymentStatus:remaining===0?"Lunas":"DP",createdAt:old?.createdAt||new Date().toISOString()};
+    if(old) bookings=bookings.map(b=>b.id===id?data:b); else bookings.push(data);saveBookings();resetForm();renderAll();setNotice("bookingNotice",old?"Booking berhasil diperbarui.":"Booking berhasil disimpan.","success");
+  });
+  document.addEventListener("change",e=>{if(e.target.classList.contains("statusChange")){const b=bookings.find(x=>x.id===e.target.dataset.id);if(!b)return;b.status=e.target.value;if(b.status==="Selesai"){b.paymentStatus="Lunas";b.remaining=0;}saveBookings();renderAll();}});
+  document.addEventListener("click",e=>{const edit=e.target.closest(".editBtn"),del=e.target.closest(".deleteBtn"),detail=e.target.closest(".calDetail");if(edit)editBooking(edit.dataset.id);if(del){pendingDelete=del.dataset.id;$("modalTitle").textContent="Hapus booking?";$("modalText").textContent="Booking ini akan dihapus permanen dari LocalStorage perangkat ini.";$("modalConfirm").style.display="inline-flex";$("modalBackdrop").classList.add("show");}if(detail)showDetail(detail.dataset.id);});
+  $("modalCancel").onclick=()=>{$("modalBackdrop").classList.remove("show");pendingDelete=null;};
+  $("modalConfirm").onclick=()=>{if(pendingDelete){bookings=bookings.filter(b=>b.id!==pendingDelete);saveBookings();renderAll();}$("modalBackdrop").classList.remove("show");pendingDelete=null;};
+  $("calendarDate").value=localDate();$("calendarDate").onchange=renderCalendar;$("todayCalendar").onclick=()=>{$("calendarDate").value=localDate();renderCalendar();};
+  $("printReport").onclick=()=>window.print();
+  $("settingsForm").addEventListener("submit",e=>{e.preventDefault();settings={name:$("settingName").value.trim()||defaultSettings.name,address:$("settingAddress").value.trim(),phone:$("settingPhone").value.trim(),hours:$("settingHours").value.trim(),logo:$("settingLogo").value.trim()};localStorage.setItem("ks_settings",JSON.stringify(settings));$("brandName").textContent=settings.name.toUpperCase();setNotice("settingsNotice","Pengaturan berhasil disimpan di perangkat ini.","success");});
+  function loadSettings(){$("settingName").value=settings.name;$("settingAddress").value=settings.address;$("settingPhone").value=settings.phone;$("settingHours").value=settings.hours;$("settingLogo").value=settings.logo;$("brandName").textContent=settings.name.toUpperCase();}
+  populateOptions();loadSettings();resetForm();renderAll();tick();setInterval(tick,1000);
+})();
+</script>
+ 
+</body></html>
